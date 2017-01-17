@@ -2,7 +2,7 @@
 
 use RedBean_Facade as R;
 
-class Controller
+class HomeController extends Controller
 {
     /** @var Twig_Environment $twig */
     protected $twig;
@@ -15,14 +15,14 @@ class Controller
 
     public function __construct()
     {
-        $this->twig = $GLOBALS['twig'];
-        $this->f3   = Base::instance();
-        //$this->web  = Web::instance();
+        parent::_construct();
     }
 
     public function get()
     {
-        $this->f3->error(404);
+        echo $this->twig->render('index.html.twig', [
+            'example' => $this->f3->get('IP')
+        ]);
     }
 
     public function post()

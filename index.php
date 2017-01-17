@@ -3,7 +3,7 @@
 /***********************
    Configure Libraries
  ***********************/
-require 'vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 use RedBean_Facade as R;
 //R::setup('mysql:host=localhost;dbname=database', 'login', 'password');
@@ -21,7 +21,7 @@ $twig->addFilter(new Twig_SimpleFilter('f3', ['f3', 'get']));
 /****************
    Configure F3
  ****************/
-$f3 = require 'vendor/bcosca/fatfree/lib/base.php';
+$f3 = \Base::instance();
 
 $f3->mset([
     'DEBUG'    => 2,
@@ -32,7 +32,7 @@ $f3->mset([
 /**********
    Routes
  **********/
-$f3->route('GET /', 'Controller->get');
+$f3->route('GET /', 'HomeController->get');
 
 /*******
    Run
